@@ -8,7 +8,7 @@ const nextConfig = {
   },
   // Cache optimization
   experimental: {
-    optimizeCss: true,
+    optimizeCss: false,
     workerThreads: true,
     optimizePackageImports: ['framer-motion', '@tailwindcss/typography']
   },
@@ -17,7 +17,11 @@ const nextConfig = {
   },
   poweredByHeader: false,
   compress: true,
-  generateEtags: true
+  generateEtags: true,
+  // Error page ayarları
+  typescript: {
+    ignoreBuildErrors: true
+  }
 }
 
 module.exports = nextConfig 

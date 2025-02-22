@@ -1,4 +1,11 @@
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
+
+export const viewport: Viewport = {
+  themeColor: "#101921",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
 
 export const metadata: Metadata = {
   title: 'SAP on Cloud Services - Cloud Transformation & Optimization | Bindx Consulting',
