@@ -100,8 +100,15 @@ const blogPosts = {
   }
 };
 
+type Props = {
+  params: {
+    slug: string;
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
 // Metadata generator
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = blogPosts[params.slug as keyof typeof blogPosts];
   
   if (!post) {
@@ -132,7 +139,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 // Server component
-export default function BlogPost({ params }: { params: { slug: string } }) {
+export default async function BlogPost({ params }: Props) {
   const post = blogPosts[params.slug as keyof typeof blogPosts];
   
   if (!post) {
