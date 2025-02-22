@@ -1,135 +1,143 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
-
-export default function BlogPage() {
-  return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-[40vh] flex items-center justify-center bg-gradient-to-r from-blue-900 to-blue-700 text-white">
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="relative z-10 text-center px-4">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Blog</h1>
-          <p className="text-xl md:text-2xl">Latest Insights & Industry News</p>
-        </div>
-      </section>
-
-      {/* Blog Posts */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Featured Post */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Featured Post</h2>
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <div className="md:flex">
-                <div className="md:w-1/2 relative h-64 md:h-auto">
-                  <Image
-                    src="/images/blog/featured.jpg"
-                    alt="Featured blog post"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="md:w-1/2 p-8">
-                  <div className="uppercase tracking-wide text-sm text-blue-600 font-semibold">SAP S/4HANA</div>
-                  <h3 className="mt-2 text-2xl font-semibold leading-tight">
-                    The Future of SAP: Embracing Cloud-First Strategy
-                  </h3>
-                  <p className="mt-4 text-gray-600">
-                    Explore how businesses are leveraging SAP's cloud-first approach to drive digital transformation and achieve operational excellence.
-                  </p>
-                  <div className="mt-6">
-                    <Link
-                      href="/blog/future-of-sap-cloud-first-strategy"
-                      className="inline-block bg-blue-900 text-white px-6 py-2 rounded-md hover:bg-blue-800 transition duration-300"
-                    >
-                      Read More
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Recent Posts */}
-          <div>
-            <h2 className="text-3xl font-bold mb-8">Recent Posts</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              {blogPosts.map((post, index) => (
-                <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
-                  <div className="relative h-48">
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <div className="uppercase tracking-wide text-sm text-blue-600 font-semibold">{post.category}</div>
-                    <h3 className="mt-2 text-xl font-semibold leading-tight">
-                      {post.title}
-                    </h3>
-                    <p className="mt-3 text-gray-600 line-clamp-3">
-                      {post.excerpt}
-                    </p>
-                    <div className="mt-6 flex items-center">
-                      <div className="flex-shrink-0">
-                        <Image
-                          src={post.author.avatar}
-                          alt={post.author.name}
-                          width={40}
-                          height={40}
-                          className="rounded-full"
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <p className="text-sm font-medium text-gray-900">{post.author.name}</p>
-                        <p className="text-sm text-gray-500">{post.date}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
+import { motion } from 'framer-motion';
 
 const blogPosts = [
   {
-    title: "Optimizing SAP Performance in the Cloud",
-    excerpt: "Learn the best practices for optimizing your SAP systems' performance in cloud environments.",
-    category: "Cloud Computing",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80",
-    author: {
-      name: "David Wilson",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80"
-    },
-    date: "February 15, 2024"
-  },
-  {
-    title: "SAP Security Best Practices",
-    excerpt: "Essential security measures to protect your SAP infrastructure from emerging threats.",
-    category: "Security",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80",
-    author: {
-      name: "Sarah Johnson",
-      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80"
-    },
-    date: "February 10, 2024"
-  },
-  {
-    title: "Digital Transformation with SAP",
-    excerpt: "How businesses are achieving digital transformation success with SAP solutions.",
-    category: "Digital Transformation",
+    id: 1,
+    title: "SAP S/4HANA Migration: A Comprehensive Guide for 2024",
+    description: "Discover the key steps, best practices, and challenges in migrating to SAP S/4HANA. Learn how to ensure a smooth transition while minimizing business disruption.",
+    date: "February 2025",
+    readTime: "8 min read",
     image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80",
-    author: {
-      name: "Michael Chen",
-      avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80"
-    },
-    date: "February 5, 2024"
+    category: "SAP Migration",
+    tags: ["SAP S/4HANA", "Digital Transformation", "Enterprise IT"]
+  },
+  {
+    id: 2,
+    title: "Cloud ALM: Revolutionizing SAP Application Lifecycle Management",
+    description: "Explore how SAP Cloud ALM is transforming the way organizations manage their SAP landscape, from implementation to operations and continuous improvement.",
+    date: "February 2025",
+    readTime: "6 min read",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80",
+    category: "Cloud Solutions",
+    tags: ["Cloud ALM", "DevOps", "Automation"]
+  },
+  {
+    id: 3,
+    title: "Essential SAP Security Best Practices for 2024",
+    description: "Learn about the latest security threats and how to protect your SAP systems. Comprehensive guide to authorization, authentication, and audit compliance.",
+    date: "February 2025",
+    readTime: "7 min read",
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80",
+    category: "Security",
+    tags: ["Cybersecurity", "Compliance", "Risk Management"]
+  },
+  {
+    id: 4,
+    title: "Optimizing SAP Performance: A Technical Deep Dive",
+    description: "Technical insights into improving SAP system performance, from database optimization to application-level tuning and monitoring strategies.",
+    date: "February 2025",
+    readTime: "10 min read",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80",
+    category: "Performance",
+    tags: ["Performance Tuning", "Monitoring", "Optimization"]
+  },
+  {
+    id: 5,
+    title: "SAP on Cloud: Choosing the Right Platform and Strategy",
+    description: "Compare different cloud platforms for SAP workloads and learn how to develop a successful cloud strategy aligned with your business objectives.",
+    date: "February 2025",
+    readTime: "9 min read",
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80",
+    category: "Cloud Infrastructure",
+    tags: ["Cloud Migration", "AWS", "Azure", "GCP"]
   }
-]; 
+];
+
+export default function BlogPage() {
+  return (
+    <div className="min-h-screen pt-32 pb-20">
+      {/* Hero Section */}
+      <div className="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            Latest Insights in SAP Technology
+          </h1>
+          <p className="text-xl text-blue-100 max-w-3xl">
+            Stay updated with the latest trends, best practices, and expert insights in SAP infrastructure, cloud solutions, and digital transformation.
+          </p>
+        </div>
+      </div>
+
+      {/* Blog Posts Timeline */}
+      <div className="max-w-7xl mx-auto px-4 mt-16">
+        <div className="space-y-12">
+          {blogPosts.map((post, index) => (
+            <motion.div
+              key={post.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="relative"
+            >
+              {/* Timeline Line */}
+              <div className="absolute left-0 top-0 bottom-0 w-px bg-gray-200 ml-6 md:ml-0 md:left-1/2" />
+              
+              {/* Timeline Content */}
+              <div className={`flex flex-col md:flex-row ${index % 2 === 0 ? 'md:flex-row-reverse' : ''} items-start gap-8`}>
+                {/* Timeline Dot */}
+                <div className="absolute left-0 md:left-1/2 w-12 h-12 bg-blue-600 rounded-full transform -translate-x-1/2 flex items-center justify-center z-10">
+                  <span className="text-white font-semibold">{post.id}</span>
+                </div>
+
+                {/* Content */}
+                <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12'} ml-12 md:ml-0`}>
+                  <Link href={`/blog/${post.id}`} className="block group">
+                    <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 group-hover:transform group-hover:scale-[1.02]">
+                      <div className="relative h-64">
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <div className="flex items-center gap-4 mb-4">
+                          <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                            {post.category}
+                          </span>
+                          <span className="text-gray-500 text-sm">{post.date}</span>
+                          <span className="text-gray-500 text-sm">{post.readTime}</span>
+                        </div>
+                        <h2 className="text-2xl font-bold mb-3 group-hover:text-blue-600 transition-colors">
+                          {post.title}
+                        </h2>
+                        <p className="text-gray-600 mb-4">
+                          {post.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {post.tags.map((tag, tagIndex) => (
+                            <span
+                              key={tagIndex}
+                              className="px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm"
+                            >
+                              #{tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+} 

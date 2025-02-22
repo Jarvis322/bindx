@@ -23,30 +23,23 @@ export default function Header() {
 
   const getHeaderStyle = () => {
     if (isHomePage) {
-      return isScrolled 
-        ? 'bg-gradient-to-r from-blue-900 to-blue-800 shadow-lg backdrop-blur-lg bg-opacity-95' 
-        : 'bg-transparent';
+      return isScrolled ? 'bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-xl' : 'bg-transparent';
     }
-    return 'bg-gradient-to-r from-blue-900 to-blue-800 shadow-lg';
+    return isScrolled ? 'bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-xl' : 'bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-xl';
   };
 
   const getTextStyle = (isButton = false) => {
-    if (isButton) {
-      return isScrolled || !isHomePage
-        ? "bg-white text-blue-900 hover:bg-blue-50 shadow-md" 
-        : "bg-blue-600 text-white hover:bg-blue-700";
-    }
+    if (isButton) return isScrolled ? "bg-blue-600 text-white hover:bg-blue-700" : "bg-blue-600 text-white hover:bg-blue-700";
     
-    return 'text-white hover:text-blue-200';
+    if (isHomePage) {
+      return isScrolled ? 'text-gray-100 hover:text-blue-400' : 'text-gray-100 hover:text-blue-400';
+    }
+    return isScrolled ? 'text-gray-100 hover:text-blue-400' : 'text-gray-100 hover:text-blue-400';
   };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${getHeaderStyle()}`}
-      style={{
-        backdropFilter: isScrolled ? 'blur(8px)' : 'none',
-        WebkitBackdropFilter: isScrolled ? 'blur(8px)' : 'none',
-      }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-sm bg-opacity-95 ${getHeaderStyle()}`}
     >
       <div className="max-w-7xl mx-auto px-8">
         <div className="flex justify-between items-center h-32">
@@ -183,6 +176,12 @@ export default function Header() {
             </div>
 
             <Link
+              href="/blog"
+              className={`font-medium transition-colors ${getTextStyle()}`}
+            >
+              Blog
+            </Link>
+            <Link
               href="/careers"
               className={`font-medium transition-colors ${getTextStyle()}`}
             >
@@ -202,7 +201,7 @@ export default function Header() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <svg
-              className="w-8 h-8 text-white"
+              className="w-8 h-8 text-gray-100"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -222,7 +221,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-gradient-to-r from-blue-900 to-blue-800">
+        <div className="md:hidden bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900">
           <div className="px-4 pt-2 pb-6">
             <Link
               href="/about"
@@ -338,6 +337,13 @@ export default function Header() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Careers
+            </Link>
+            <Link
+              href="/blog"
+              className="block py-2 text-white hover:text-blue-200"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Blog
             </Link>
             <Link
               href="/contact"
