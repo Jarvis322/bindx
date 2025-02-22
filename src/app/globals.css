@@ -20,6 +20,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* İç sayfa başlıkları için stil */
+.main-content h1,
+.main-content h2 {
+  @apply text-gray-900;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
