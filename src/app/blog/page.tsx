@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const blogPosts = [
   {
-    id: 1,
+    slug: 'sap-s4hana-migration-guide-2024',
     title: "SAP S/4HANA Migration: A Comprehensive Guide for 2024",
     description: "Discover the key steps, best practices, and challenges in migrating to SAP S/4HANA. Learn how to ensure a smooth transition while minimizing business disruption.",
     date: "February 2025",
@@ -16,7 +16,7 @@ const blogPosts = [
     tags: ["SAP S/4HANA", "Digital Transformation", "Enterprise IT"]
   },
   {
-    id: 2,
+    slug: 'cloud-alm-revolutionizing-sap-lifecycle-management',
     title: "Cloud ALM: Revolutionizing SAP Application Lifecycle Management",
     description: "Explore how SAP Cloud ALM is transforming the way organizations manage their SAP landscape, from implementation to operations and continuous improvement.",
     date: "February 2025",
@@ -26,7 +26,7 @@ const blogPosts = [
     tags: ["Cloud ALM", "DevOps", "Automation"]
   },
   {
-    id: 3,
+    slug: 'sap-security-best-practices-2024',
     title: "Essential SAP Security Best Practices for 2024",
     description: "Learn about the latest security threats and how to protect your SAP systems. Comprehensive guide to authorization, authentication, and audit compliance.",
     date: "February 2025",
@@ -36,7 +36,7 @@ const blogPosts = [
     tags: ["Cybersecurity", "Compliance", "Risk Management"]
   },
   {
-    id: 4,
+    slug: 'optimizing-sap-performance-technical-guide',
     title: "Optimizing SAP Performance: A Technical Deep Dive",
     description: "Technical insights into improving SAP system performance, from database optimization to application-level tuning and monitoring strategies.",
     date: "February 2025",
@@ -46,7 +46,7 @@ const blogPosts = [
     tags: ["Performance Tuning", "Monitoring", "Optimization"]
   },
   {
-    id: 5,
+    slug: 'sap-cloud-platform-strategy-guide',
     title: "SAP on Cloud: Choosing the Right Platform and Strategy",
     description: "Compare different cloud platforms for SAP workloads and learn how to develop a successful cloud strategy aligned with your business objectives.",
     date: "February 2025",
@@ -77,7 +77,7 @@ export default function BlogPage() {
         <div className="space-y-12">
           {blogPosts.map((post, index) => (
             <motion.div
-              key={post.id}
+              key={post.slug}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
@@ -90,12 +90,12 @@ export default function BlogPage() {
               <div className={`flex flex-col md:flex-row ${index % 2 === 0 ? 'md:flex-row-reverse' : ''} items-start gap-8`}>
                 {/* Timeline Dot */}
                 <div className="absolute left-0 md:left-1/2 w-12 h-12 bg-blue-600 rounded-full transform -translate-x-1/2 flex items-center justify-center z-10">
-                  <span className="text-white font-semibold">{post.id}</span>
+                  <span className="text-white font-semibold">{index + 1}</span>
                 </div>
 
                 {/* Content */}
                 <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12'} ml-12 md:ml-0`}>
-                  <Link href={`/blog/${post.id}`} className="block group">
+                  <Link href={`/blog/${post.slug}`} className="block group">
                     <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 group-hover:transform group-hover:scale-[1.02]">
                       <div className="relative h-64">
                         <Image

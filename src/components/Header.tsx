@@ -23,9 +23,9 @@ export default function Header() {
 
   const getHeaderStyle = () => {
     if (isHomePage) {
-      return isScrolled ? 'bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-xl' : 'bg-transparent';
+      return isScrolled ? 'bg-[#101921] shadow-xl' : 'bg-transparent';
     }
-    return isScrolled ? 'bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-xl' : 'bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-xl';
+    return isScrolled ? 'bg-[#101921] shadow-xl' : 'bg-[#101921] shadow-xl';
   };
 
   const getTextStyle = (isButton = false) => {

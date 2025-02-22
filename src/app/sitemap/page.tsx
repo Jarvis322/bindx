@@ -1,74 +1,120 @@
 import Link from 'next/link';
 
-export default function Sitemap() {
-  const siteStructure = [
+export default function SitemapPage() {
+  const baseUrl = 'https://www.bindx.consulting';
+  
+  const staticPages = [
+    { path: '', title: 'Home' },
+    { path: 'about', title: 'About Us' },
+    { path: 'contact', title: 'Contact' },
+    { path: 'careers', title: 'Careers' },
+    { path: 'blog', title: 'Blog' },
+  ];
+
+  const servicePages = [
+    { path: 'cloud-solutions', title: 'Cloud Solutions' },
+    { path: 'database-service', title: 'Database as a Service' },
+    { path: 'network-infrastructure', title: 'Network & Infrastructure' },
+    { path: 'security-compliance', title: 'Security & Compliance' },
+    { path: 'it-project-management', title: 'IT Project Management' },
+    { path: 'sap-basis-support', title: 'SAP Basis Support' },
+    { path: 'sap-authorization', title: 'SAP Authorization' },
+    { path: 'sap-hana', title: 'SAP HANA Services' },
+    { path: 'sap-performance', title: 'SAP Performance' },
+    { path: 'sap-migration', title: 'SAP Migration' },
+    { path: 'sap-cloud-alm', title: 'SAP Cloud ALM' },
+    { path: 'sap-upgrade', title: 'SAP Upgrade' },
+    { path: 'sap-patching', title: 'SAP Patching' }
+  ];
+
+  const blogPosts = [
     {
-      title: 'Main Pages',
-      links: [
-        { name: 'Home', path: '/' },
-        { name: 'About', path: '/about' },
-        { name: 'Contact', path: '/contact' },
-        { name: 'Careers', path: '/careers' },
-        { name: 'Blog', path: '/blog' },
-      ],
+      slug: 'sap-s4hana-migration-guide-2024',
+      title: 'SAP S/4HANA Migration: A Comprehensive Guide for 2024'
     },
     {
-      title: 'IT Services',
-      links: [
-        { name: 'Cloud Solutions', path: '/services/cloud-solutions' },
-        { name: 'Database as a Service', path: '/services/database-service' },
-        { name: 'Network & Infrastructure', path: '/services/network-infrastructure' },
-        { name: 'Security & Compliance', path: '/services/security-compliance' },
-        { name: 'IT Project Management', path: '/services/it-project-management' },
-      ],
+      slug: 'cloud-alm-revolutionizing-sap-lifecycle-management',
+      title: 'Cloud ALM: Revolutionizing SAP Application Lifecycle Management'
     },
     {
-      title: 'SAP Services',
-      links: [
-        { name: 'SAP Basis Support', path: '/services/sap-basis-support' },
-        { name: 'SAP Authorization', path: '/services/sap-authorization' },
-        { name: 'SAP HANA Services', path: '/services/sap-hana' },
-        { name: 'SAP Performance', path: '/services/sap-performance' },
-        { name: 'SAP Migration', path: '/services/sap-migration' },
-        { name: 'SAP Cloud ALM', path: '/services/sap-cloud-alm' },
-        { name: 'SAP Upgrade', path: '/services/sap-upgrade' },
-        { name: 'SAP Patching', path: '/services/sap-patching' },
-      ],
+      slug: 'sap-security-best-practices-2024',
+      title: 'Essential SAP Security Best Practices for 2024'
     },
     {
-      title: 'Legal',
-      links: [
-        { name: 'Privacy Policy', path: '/privacy-policy' },
-        { name: 'Terms of Service', path: '/terms-of-service' },
-      ],
+      slug: 'optimizing-sap-performance-technical-guide',
+      title: 'Optimizing SAP Performance: A Technical Deep Dive'
     },
+    {
+      slug: 'sap-cloud-platform-strategy-guide',
+      title: 'SAP on Cloud: Choosing the Right Platform and Strategy'
+    }
   ];
 
   return (
-    <main className="min-h-screen pt-20">
-      <div className="max-w-4xl mx-auto px-4 py-20">
+    <div className="min-h-screen pt-32 pb-20">
+      <div className="max-w-7xl mx-auto px-4">
         <h1 className="text-4xl font-bold mb-12">Sitemap</h1>
+        
+        {/* Main Pages */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-6 text-blue-900">Main Pages</h2>
+          <div className="grid gap-4">
+            {staticPages.map((page) => (
+              <Link
+                key={page.path}
+                href={`/${page.path}`}
+                className="flex items-center space-x-2 text-gray-700 hover:text-blue-600"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+                <span>{page.title}</span>
+                <span className="text-sm text-gray-500">{`${baseUrl}/${page.path}`}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
 
-        <div className="space-y-12">
-          {siteStructure.map((section, index) => (
-            <section key={index}>
-              <h2 className="text-2xl font-semibold mb-6">{section.title}</h2>
-              <ul className="grid md:grid-cols-2 gap-4">
-                {section.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
-                    <Link
-                      href={link.path}
-                      className="text-blue-600 hover:text-blue-800 transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
-        </div>
+        {/* Service Pages */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-6 text-blue-900">Services</h2>
+          <div className="grid gap-4">
+            {servicePages.map((service) => (
+              <Link
+                key={service.path}
+                href={`/services/${service.path}`}
+                className="flex items-center space-x-2 text-gray-700 hover:text-blue-600"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+                <span>{service.title}</span>
+                <span className="text-sm text-gray-500">{`${baseUrl}/services/${service.path}`}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Blog Posts */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-6 text-blue-900">Blog Posts</h2>
+          <div className="grid gap-4">
+            {blogPosts.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="flex items-center space-x-2 text-gray-700 hover:text-blue-600"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+                <span>{post.title}</span>
+                <span className="text-sm text-gray-500">{`${baseUrl}/blog/${post.slug}`}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
       </div>
-    </main>
+    </div>
   );
 } 
