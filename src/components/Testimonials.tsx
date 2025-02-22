@@ -40,7 +40,9 @@ export function Testimonials() {
                       </div>
                       <div>
                         <h3 className="text-xl font-semibold">{testimonial.name}</h3>
-                        <p className="text-gray-600">{testimonial.position}</p>
+                        <p className="text-gray-600 italic">
+                          &ldquo;Bindx&rsquo;in SAP hizmetleri sayesinde sistemlerimiz daha güvenli ve verimli çalışıyor.&rdquo;
+                        </p>
                         <p className="text-blue-900 font-medium">{testimonial.company}</p>
                       </div>
                     </div>
