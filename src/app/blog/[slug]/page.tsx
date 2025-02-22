@@ -1,13 +1,12 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { createElement } from 'react';
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
+// Blog yazıları
 const blogPosts = {
   "sap-s4hana-migration-guide-2024": {
     title: "SAP S/4HANA Migration: A Comprehensive Guide for 2024",
@@ -107,13 +106,13 @@ const blogPosts = {
 
 // Metadata generator
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = blogPosts[params.slug as keyof typeof blogPosts]
+  const post = blogPosts[params.slug as keyof typeof blogPosts];
   
   if (!post) {
     return {
       title: 'Post Not Found | BINDX Consulting',
       description: 'The requested blog post could not be found.'
-    }
+    };
   }
 
   return {
@@ -133,17 +132,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       title: post.title,
       description: post.content.split('\n').find(paragraph => paragraph.trim()) || ''
     }
-  }
+  };
 }
 
-export default function BlogPost() {
-  const { slug } = useParams();
-  const post = blogPosts[slug as keyof typeof blogPosts];
+// Client component
+'use client';
 
-  if (!post) {
-    notFound()
-  }
-
+function BlogPostClient({ post }: { post: any }) {
   const renderContent = (content: string) => {
     return content.split('\n').map((paragraph, index) => {
       const trimmedParagraph = paragraph.trim();
@@ -207,7 +202,7 @@ export default function BlogPost() {
           {/* Tags */}
           <div className="mt-12 pt-8 border-t">
             <div className="flex flex-wrap gap-2">
-              {post.tags.map((tag, index) => (
+              {post.tags.map((tag: string, index: number) => (
                 <span
                   key={index}
                   className="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm"
@@ -244,4 +239,15 @@ export default function BlogPost() {
       </div>
     </div>
   );
+}
+
+// Server component
+export default function BlogPost({ params }: { params: { slug: string } }) {
+  const post = blogPosts[params.slug as keyof typeof blogPosts];
+  
+  if (!post) {
+    notFound();
+  }
+
+  return <BlogPostClient post={post} />;
 } 
