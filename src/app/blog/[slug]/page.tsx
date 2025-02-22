@@ -110,13 +110,8 @@ interface BlogPost {
   content: string;
 }
 
-type GenerateMetadataProps = {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
-
 export async function generateMetadata(
-  { params, searchParams }: GenerateMetadataProps
+  { params }: { params: { slug: string } }
 ): Promise<Metadata> {
   const post = blogPosts[params.slug as keyof typeof blogPosts];
   
@@ -147,12 +142,11 @@ export async function generateMetadata(
   };
 }
 
-interface PageProps {
+export default function BlogPost({
+  params,
+}: {
   params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}
-
-export default async function BlogPost({ params, searchParams }: PageProps) {
+}) {
   const post = blogPosts[params.slug as keyof typeof blogPosts];
   
   if (!post) {
