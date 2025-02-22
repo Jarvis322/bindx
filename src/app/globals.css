@@ -20,10 +20,96 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* İç sayfa başlıkları için stil */
-.main-content h1,
+/* Genel metin stilleri */
+.main-content {
+  @apply text-gray-700;
+}
+
+/* Başlık stilleri */
+.main-content h1 {
+  @apply text-gray-900 text-4xl font-bold mb-6;
+}
+
 .main-content h2 {
+  @apply text-gray-900 text-3xl font-bold mb-4;
+}
+
+.main-content h3 {
+  @apply text-gray-800 text-2xl font-semibold mb-3;
+}
+
+/* Paragraf stilleri */
+.main-content p {
+  @apply text-gray-700 mb-4 leading-relaxed;
+}
+
+/* Link stilleri */
+.main-content a {
+  @apply text-blue-600 hover:text-blue-800 transition-colors;
+}
+
+/* Açık arka planlı bölümler için metin renkleri */
+.bg-blue-50 p,
+.bg-gray-50 p,
+.bg-blue-50 span,
+.bg-gray-50 span {
+  @apply text-gray-700;
+}
+
+.bg-blue-50 h1,
+.bg-blue-50 h2,
+.bg-gray-50 h1,
+.bg-gray-50 h2 {
   @apply text-gray-900;
+}
+
+/* Koyu arka planlı bölümler için metin renkleri */
+[class*="bg-blue-600"],
+[class*="bg-blue-700"],
+[class*="bg-blue-800"],
+[class*="bg-blue-900"],
+[class*="from-blue-900"],
+[class*="to-blue-800"] {
+  @apply text-white;
+}
+
+[class*="bg-blue-600"] p,
+[class*="bg-blue-700"] p,
+[class*="bg-blue-800"] p,
+[class*="bg-blue-900"] p,
+[class*="from-blue-900"] p,
+[class*="to-blue-800"] p,
+[class*="bg-blue-600"] span,
+[class*="bg-blue-700"] span,
+[class*="bg-blue-800"] span,
+[class*="bg-blue-900"] span,
+[class*="from-blue-900"] span,
+[class*="to-blue-800"] span {
+  @apply text-blue-100;
+}
+
+[class*="bg-blue-600"] h1,
+[class*="bg-blue-700"] h1,
+[class*="bg-blue-800"] h1,
+[class*="bg-blue-900"] h1,
+[class*="from-blue-900"] h1,
+[class*="to-blue-800"] h1,
+[class*="bg-blue-600"] h2,
+[class*="bg-blue-700"] h2,
+[class*="bg-blue-800"] h2,
+[class*="bg-blue-900"] h2,
+[class*="from-blue-900"] h2,
+[class*="to-blue-800"] h2 {
+  @apply text-white font-bold;
+}
+
+[class*="bg-blue-600"] a,
+[class*="bg-blue-700"] a,
+[class*="bg-blue-800"] a,
+[class*="bg-blue-900"] a,
+[class*="from-blue-900"] a,
+[class*="to-blue-800"] a {
+  @apply text-blue-200 hover:text-white transition-colors;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
