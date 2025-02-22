@@ -23,42 +23,49 @@ export default function Header() {
 
   const getHeaderStyle = () => {
     if (isHomePage) {
-      return isScrolled ? 'bg-gradient-to-r from-blue-900 to-blue-800 shadow-lg' : 'bg-transparent';
+      return isScrolled 
+        ? 'bg-gradient-to-r from-blue-900 to-blue-800 shadow-lg backdrop-blur-lg bg-opacity-95' 
+        : 'bg-transparent';
     }
-    return isScrolled ? 'bg-gradient-to-r from-blue-900 to-blue-800 shadow-lg' : 'bg-gradient-to-r from-blue-900 to-blue-800 shadow-lg';
+    return 'bg-gradient-to-r from-blue-900 to-blue-800 shadow-lg';
   };
 
   const getTextStyle = (isButton = false) => {
-    if (isButton) return isScrolled ? "bg-white text-blue-900 hover:bg-blue-50" : "bg-blue-600 text-white hover:bg-blue-700";
-    
-    if (isHomePage) {
-      return isScrolled ? 'text-white hover:text-blue-200' : 'text-white hover:text-blue-200';
+    if (isButton) {
+      return isScrolled || !isHomePage
+        ? "bg-white text-blue-900 hover:bg-blue-50 shadow-md" 
+        : "bg-blue-600 text-white hover:bg-blue-700";
     }
-    return isScrolled ? 'text-white hover:text-blue-200' : 'text-white hover:text-blue-200';
+    
+    return 'text-white hover:text-blue-200';
   };
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${getHeaderStyle()}`}
+      style={{
+        backdropFilter: isScrolled ? 'blur(8px)' : 'none',
+        WebkitBackdropFilter: isScrolled ? 'blur(8px)' : 'none',
+      }}
     >
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between items-center h-20">
+      <div className="max-w-7xl mx-auto px-8">
+        <div className="flex justify-between items-center h-32">
           {/* Logo */}
           <Link href="/" className="relative z-10">
             <Image
               src="/images/logo.svg"
               alt="Bindx Logo"
-              width={120}
-              height={40}
+              width={360}
+              height={120}
               className="filter-none"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-10">
             <Link
               href="/about"
-              className={`font-medium transition-colors ${getTextStyle()}`}
+              className={`text-lg font-medium transition-colors ${getTextStyle()}`}
             >
               About
             </Link>
@@ -70,11 +77,11 @@ export default function Header() {
               onMouseLeave={() => setIsOpen(null)}
             >
               <div
-                className={`font-medium transition-colors cursor-pointer ${getTextStyle()}`}
+                className={`text-lg font-medium transition-colors cursor-pointer ${getTextStyle()}`}
               >
                 Services
               </div>
-              <div className={`absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50`}>
+              <div className={`absolute top-full left-0 pt-4 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50`}>
                 <div className="bg-white rounded-lg shadow-xl py-2">
                   <Link
                     href="/services/cloud-solutions"
@@ -176,12 +183,6 @@ export default function Header() {
             </div>
 
             <Link
-              href="/blog"
-              className={`font-medium transition-colors ${getTextStyle()}`}
-            >
-              Blog
-            </Link>
-            <Link
               href="/careers"
               className={`font-medium transition-colors ${getTextStyle()}`}
             >
@@ -197,11 +198,11 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden relative z-10"
+            className="md:hidden relative z-10 p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <svg
-              className="w-6 h-6 text-white"
+              className="w-8 h-8 text-white"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -331,13 +332,6 @@ export default function Header() {
                 </Link>
               </div>
             </div>
-            <Link
-              href="/blog"
-              className="block py-2 text-white hover:text-blue-200"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Blog
-            </Link>
             <Link
               href="/careers"
               className="block py-2 text-white hover:text-blue-200"

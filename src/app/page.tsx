@@ -88,10 +88,10 @@ export default function Home() {
 
       {/* SAP Services Section */}
       {isClient && (
-        <section className="py-20 bg-gray-50 overflow-hidden w-full">
+        <section className="py-20 bg-blue-50 overflow-hidden w-full">
           <div className="text-center mb-12 max-w-3xl mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-4">Our SAP Services</h2>
-            <p className="text-gray-600">
+            <h2 className="text-3xl font-bold mb-4 text-gray-900">Our SAP Services</h2>
+            <p className="text-blue-800">
               We are by your side in your business's digital transformation journey with our comprehensive SAP solutions. 
               Our expert team optimizes your SAP systems, ensures security, and enhances performance.
             </p>
@@ -156,13 +156,13 @@ export default function Home() {
                       }
                     ].map((service, index) => (
                       <div key={`${loopIndex}-${index}`} className="flex-none w-[300px] md:w-[320px] snap-start">
-                        <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col">
+                        <div className="bg-white p-6 rounded-lg shadow-lg h-full flex flex-col">
                           <div className="text-blue-600 mb-4">
                             <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={service.icon} />
                             </svg>
                           </div>
-                          <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+                          <h3 className="text-xl font-semibold mb-2 text-gray-900">{service.title}</h3>
                           <p className="text-gray-600 mb-4 flex-grow">
                             {service.description}
                           </p>
@@ -182,8 +182,8 @@ export default function Home() {
               <div className="flex-none w-[5vw]"></div>
             </div>
             
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 bg-gradient-to-r from-gray-50 via-gray-50 to-transparent w-[5vw] h-full z-10"></div>
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 bg-gradient-to-l from-gray-50 via-gray-50 to-transparent w-[5vw] h-full z-10"></div>
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-50 via-blue-50 to-transparent w-[5vw] h-full z-10"></div>
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 bg-gradient-to-l from-blue-50 via-blue-50 to-transparent w-[5vw] h-full z-10"></div>
           </div>
         </section>
       )}
