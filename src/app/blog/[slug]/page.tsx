@@ -147,12 +147,12 @@ export async function generateMetadata(
   };
 }
 
-type PageProps = {
+interface PageProps {
   params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
 
-export default function BlogPost({ params, searchParams }: PageProps) {
+export default async function BlogPost({ params, searchParams }: PageProps) {
   const post = blogPosts[params.slug as keyof typeof blogPosts];
   
   if (!post) {
