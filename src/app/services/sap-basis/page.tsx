@@ -1,72 +1,22 @@
-import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import Script from 'next/script';
-import {
+import { 
   ServerIcon,
   CloudIcon,
   CpuChipIcon,
-  CogIcon,
+  CircleStackIcon,
   ArrowPathIcon,
   ShieldCheckIcon,
-  CircleStackIcon,
-  ArrowUpCircleIcon,
-  KeyIcon,
+  ArrowsPointingOutIcon,
+  LockClosedIcon,
   CloudArrowUpIcon,
+  SignalIcon,
   ChartBarIcon,
   WrenchScrewdriverIcon,
   ClipboardDocumentCheckIcon,
-  CommandLineIcon,
-  RocketLaunchIcon,
-  CheckCircleIcon,
-  ClockIcon,
-  ArrowsPointingOutIcon,
-  LockClosedIcon,
-  SignalIcon,
-  UserGroupIcon
+  UserGroupIcon,
+  CheckCircleIcon
 } from '@heroicons/react/24/outline';
-
-export const metadata: Metadata = {
-  title: 'SAP Basis Support Services | BINDX Digital Solutions',
-  description: 'Expert SAP Basis support services including infrastructure design, virtualization, system management, HANA services, and 24/7 technical support with 15+ years of experience.',
-  keywords: 'SAP Basis, SAP Support, Infrastructure Management, System Administration, HANA Services, Technical Consulting, SAP Security, Performance Optimization',
-  alternates: {
-    canonical: 'https://bindx.com/services/sap-basis-support'
-  },
-  openGraph: {
-    title: 'SAP Basis Support Services | BINDX Digital Solutions',
-    description: 'Comprehensive SAP Basis support services with 15+ years of experience. Infrastructure design, virtualization, system management, HANA services, and 24/7 technical support.',
-    type: 'website',
-    locale: 'en_US',
-    siteName: 'BINDX Digital Solutions',
-    url: 'https://bindx.com/services/sap-basis-support',
-    images: [
-      {
-        url: 'https://bindx.com/images/og-sap-basis.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'BINDX SAP Basis Support Services'
-      }
-    ]
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'SAP Basis Support Services | BINDX Digital Solutions',
-    description: 'Expert SAP Basis support services with infrastructure design, system management, and 24/7 technical support.',
-    images: ['https://bindx.com/images/og-sap-basis.jpg']
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-};
 
 interface ServiceCardProps {
   title: string;
@@ -102,7 +52,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, bulletPoi
   );
 };
 
-export default function SapBasisSupport() {
+export default function SapBasis() {
   const services = [
     {
       title: "Infrastructure Design and Installation",
@@ -382,178 +332,131 @@ export default function SapBasisSupport() {
     }
   ];
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "SAP Basis Support Services",
-    "provider": {
-      "@type": "Organization",
-      "name": "BINDX Digital Solutions",
-      "url": "https://bindx.com"
-    },
-    "description": "Expert SAP Basis support services including infrastructure design, virtualization, system management, HANA services, and 24/7 technical support.",
-    "areaServed": "Worldwide",
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "SAP Basis Services",
-      "itemListElement": services.map((service, index) => ({
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": service.title,
-          "description": service.description
-        }
-      }))
-    },
-    "serviceType": "SAP Basis Support",
-    "availableChannel": {
-      "@type": "ServiceChannel",
-      "serviceUrl": "https://bindx.com/contact",
-      "servicePhone": "+1-XXX-XXX-XXXX",
-      "availableLanguage": ["English", "Turkish"]
-    }
-  };
-
   return (
-    <>
-      <Script
-        id="schema-sap-basis"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <div className="min-h-screen bg-gray-50">
-        {/* Hero Section */}
-        <div 
-          className="relative h-[40vh] min-h-[400px] bg-gradient-to-r from-blue-600 to-blue-800"
-          role="banner"
-          aria-label="SAP Basis Support Services hero section"
-        >
-          <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:80px_80px]" />
-          <div className="absolute inset-0 flex items-center justify-center text-center">
-            <div className="px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero-basis.jpg"
+            alt="SAP Basis Services"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800 mix-blend-multiply" />
+        </div>
+        <div className="relative pt-24 pb-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
               <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl">
-                SAP Basis Support Services
+                SAP Basis Services
               </h1>
-              <p className="mt-3 text-xl text-blue-100 max-w-3xl mx-auto">
+              <p className="mt-3 max-w-3xl mx-auto text-xl text-blue-100">
                 End-to-End SAP Infrastructure Management and Consulting
               </p>
             </div>
           </div>
         </div>
-
-        {/* Introduction Section */}
-        <section 
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
-          aria-label="Introduction"
-        >
-          <div className="text-center max-w-4xl mx-auto">
-            <p className="text-lg text-gray-600 leading-relaxed">
-              At BINDX, we strengthen your business's digital backbone with our engineering staff specialized in every layer of your SAP systems from foundation to roof. Our 15+ years of experience in SAP Basis enables us to offer holistic solutions that meet the complex requirements of the modern business world.
-            </p>
-          </div>
-
-          {/* Statistics */}
-          <div 
-            className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4"
-            aria-label="Company statistics"
-          >
-            <div className="bg-white rounded-lg shadow px-6 py-8 text-center">
-              <div className="text-3xl font-bold text-blue-600">15+</div>
-              <div className="mt-2 text-gray-600">Years Experience</div>
-            </div>
-            <div className="bg-white rounded-lg shadow px-6 py-8 text-center">
-              <div className="text-3xl font-bold text-blue-600">24/7</div>
-              <div className="mt-2 text-gray-600">Support</div>
-            </div>
-            <div className="bg-white rounded-lg shadow px-6 py-8 text-center">
-              <div className="text-3xl font-bold text-blue-600">99.9%</div>
-              <div className="mt-2 text-gray-600">System Uptime</div>
-            </div>
-            <div className="bg-white rounded-lg shadow px-6 py-8 text-center">
-              <div className="text-3xl font-bold text-blue-600">500+</div>
-              <div className="mt-2 text-gray-600">Projects Delivered</div>
-            </div>
-          </div>
-        </section>
-
-        {/* Services Grid */}
-        <section 
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
-          aria-label="Our services"
-        >
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            Our SAP Basis Support Services
-          </h2>
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-            {services.map((service, index) => (
-              <ServiceCard key={index} {...service} />
-            ))}
-          </div>
-        </section>
-
-        {/* Features Section */}
-        <section 
-          className="bg-gray-900 py-16"
-          aria-label="Why choose us"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-white text-center mb-12">
-              Why Choose BINDX for SAP Basis Support
-            </h2>
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="text-center">
-                <div className="inline-block p-3 bg-blue-600 rounded-full">
-                  <UserGroupIcon className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="mt-4 text-xl font-semibold text-white">Expert Team</h3>
-                <p className="mt-2 text-gray-400">Specialized engineers</p>
-              </div>
-              <div className="text-center">
-                <div className="inline-block p-3 bg-blue-600 rounded-full">
-                  <SignalIcon className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="mt-4 text-xl font-semibold text-white">24/7 Support</h3>
-                <p className="mt-2 text-gray-400">Always available</p>
-              </div>
-              <div className="text-center">
-                <div className="inline-block p-3 bg-blue-600 rounded-full">
-                  <ShieldCheckIcon className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="mt-4 text-xl font-semibold text-white">Proven Track Record</h3>
-                <p className="mt-2 text-gray-400">Years of success</p>
-              </div>
-              <div className="text-center">
-                <div className="inline-block p-3 bg-blue-600 rounded-full">
-                  <ChartBarIcon className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="mt-4 text-xl font-semibold text-white">End-to-End Service</h3>
-                <p className="mt-2 text-gray-400">Complete coverage</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section 
-          className="bg-gradient-to-r from-blue-600 to-blue-800 py-16"
-          aria-label="Contact us"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Ready to Strengthen Your SAP Foundation?
-            </h2>
-            <p className="text-xl text-blue-100 mb-8">
-              Contact us today to discuss how our SAP Basis expertise can support your business.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300"
-            >
-              Get Started
-            </Link>
-          </div>
-        </section>
       </div>
-    </>
+
+      {/* Introduction Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="text-center max-w-4xl mx-auto">
+          <p className="text-lg text-gray-600 leading-relaxed">
+            At BINDX, we strengthen your business's digital backbone with our engineering staff specialized in every layer of your SAP systems from foundation to roof. Our 15+ years of experience in SAP Basis enables us to offer holistic solutions that meet the complex requirements of the modern business world.
+          </p>
+        </div>
+
+        {/* Statistics */}
+        <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="bg-white rounded-lg shadow px-6 py-8 text-center">
+            <div className="text-3xl font-bold text-blue-600">15+</div>
+            <div className="mt-2 text-gray-600">Years Experience</div>
+          </div>
+          <div className="bg-white rounded-lg shadow px-6 py-8 text-center">
+            <div className="text-3xl font-bold text-blue-600">24/7</div>
+            <div className="mt-2 text-gray-600">Support</div>
+          </div>
+          <div className="bg-white rounded-lg shadow px-6 py-8 text-center">
+            <div className="text-3xl font-bold text-blue-600">99.9%</div>
+            <div className="mt-2 text-gray-600">System Uptime</div>
+          </div>
+          <div className="bg-white rounded-lg shadow px-6 py-8 text-center">
+            <div className="text-3xl font-bold text-blue-600">500+</div>
+            <div className="mt-2 text-gray-600">Projects Delivered</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Services Grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+          Our SAP Basis Services
+        </h2>
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          {services.map((service, index) => (
+            <ServiceCard key={index} {...service} />
+          ))}
+        </div>
+      </div>
+
+      {/* Features Section */}
+      <div className="bg-gray-900 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-white text-center mb-12">
+            Why Choose BINDX for SAP Basis
+          </h2>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="text-center">
+              <div className="inline-block p-3 bg-blue-600 rounded-full">
+                <UserGroupIcon className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="mt-4 text-xl font-semibold text-white">Expert Team</h3>
+              <p className="mt-2 text-gray-400">Specialized engineers</p>
+            </div>
+            <div className="text-center">
+              <div className="inline-block p-3 bg-blue-600 rounded-full">
+                <SignalIcon className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="mt-4 text-xl font-semibold text-white">24/7 Support</h3>
+              <p className="mt-2 text-gray-400">Always available</p>
+            </div>
+            <div className="text-center">
+              <div className="inline-block p-3 bg-blue-600 rounded-full">
+                <ShieldCheckIcon className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="mt-4 text-xl font-semibold text-white">Proven Track Record</h3>
+              <p className="mt-2 text-gray-400">Years of success</p>
+            </div>
+            <div className="text-center">
+              <div className="inline-block p-3 bg-blue-600 rounded-full">
+                <ChartBarIcon className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="mt-4 text-xl font-semibold text-white">End-to-End Service</h3>
+              <p className="mt-2 text-gray-400">Complete coverage</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="bg-gradient-to-r from-blue-600 to-blue-800 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Ready to Strengthen Your SAP Foundation?
+          </h2>
+          <p className="text-xl text-blue-100 mb-8">
+            Contact us today to discuss how our SAP Basis expertise can support your business.
+          </p>
+          <Link
+            href="/contact"
+            className="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300"
+          >
+            Get Started
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 } 

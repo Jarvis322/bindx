@@ -42,14 +42,14 @@ export default function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-sm bg-opacity-95 ${getHeaderStyle()}`}
     >
       <div className="max-w-7xl mx-auto px-8">
-        <div className="flex justify-between items-center h-32">
+        <div className="flex justify-between items-center h-24">
           {/* Logo */}
           <Link href="/" className="relative z-10">
             <Image
               src="/images/logo.svg"
               alt="Bindx Logo"
-              width={360}
-              height={120}
+              width={180}
+              height={60}
               className="filter-none"
             />
           </Link>
