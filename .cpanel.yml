@@ -1,0 +1,11 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/bindx/public_html/
+    - /bin/cp -R * $DEPLOYPATH
+    - /bin/cp -R .next $DEPLOYPATH
+    - /bin/cp package.json $DEPLOYPATH
+    - /bin/cp .env.local $DEPLOYPATH
+    - cd $DEPLOYPATH
+    - npm install --production
+    - npm run build 
