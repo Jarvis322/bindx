@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   images: {
-    unoptimized: true,
     domains: ['images.unsplash.com'],
   },
   eslint: {
@@ -23,7 +21,8 @@ const nextConfig = {
   // Error page ayarları
   typescript: {
     ignoreBuildErrors: true
-  }
+  },
+  output: 'standalone',
 }
 
 module.exports = nextConfig 
