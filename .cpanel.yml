@@ -4,10 +4,5 @@ deployment:
     - export DEPLOYPATH=/home/bindx/public_html
     - /bin/rm -rf $DEPLOYPATH/*
     - /bin/cp -R ./* $DEPLOYPATH/
-    - /bin/cp -R ./.next $DEPLOYPATH/
-    - /bin/cp .env.local $DEPLOYPATH/ || true
-    - cd $DEPLOYPATH
-    - export PATH=/opt/cpanel/ea-nodejs20/root/usr/bin:$PATH
-    - npm install --production
-    - npm run build
-    - if [ -f "ecosystem.config.js" ]; then pm2 reload ecosystem.config.js; else pm2 restart next || pm2 start npm --name "next" -- start; fi 
+    - /bin/cp -R ./.next $DEPLOYPATH/ || true
+    - /bin/cp .env.local $DEPLOYPATH/ || true 
